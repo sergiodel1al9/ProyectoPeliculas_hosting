@@ -1,0 +1,128 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 02-mar-2016, 14:58:26
+    Author     : Super
+*/
+
+/* Estilos del menÃº */
+
+/* Definimos el ancho para que ocupe todo el ancho de la pantalla. AsÃ­ mismo 
+definimos un color de fondo para el contenedor, los valores de visibilidad y 
+flotabilidad, asÃ­ como el tipo de letra y su tamaÃ±o*/
+#menu{
+    width: 99.75%;
+    display: block;
+    float: left;
+
+    moz-box-shadow: 0px 1px 0px 0px #3985B1;
+    -webkit-box-shadow: 0px 1px 0px 0px #3985B1;
+    box-shadow: 0px 1px 0px 0px #3985B1;   
+    background-color: #216288;
+    border: 1px solid #17445E;
+    cursor: pointer;
+    color: #FFFFFF;
+    text-decoration: none;
+    font: 1vmax Arial, Helvetica, sans-serif;
+    color: #ffffff;
+}
+/* Ocultamos la segunda lista de enlaces */
+nav ul ul {
+    display: none;
+}
+
+/* Y mostramos la segunda lista de enlaces si nos posicionamos en un enlace de 
+la primera lista */
+nav ul li:hover > ul {
+    display: block;
+}
+
+/* Deffinimos los margenes y el relleno, quitamos los marcadores de la lista y 
+especificamos los valores de visibilidad y de posicionamiento */
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: relative;
+    display: inline-table;
+    vertical-align: middle;   
+}
+
+
+nav ul:last-child {
+    float: right;    
+}
+/* Espeficamos la inclusiÃ³n de contenido nulo despues del primer listado para 
+limpiar los valores especificados de estilos */
+nav ul:after {
+    content: ""; 
+    clear: both; 
+    display: block;
+}
+
+/* Espeficiamos el rellenos, el ancho y un borde para los enlaces de la lista */
+nav ul li {
+    float: left;
+    padding: 0 0.5vmax;
+    width: 10vmax;
+    border-right: 0.15vmax solid #fff;
+}
+
+nav ul li span{
+    color: #ffffff;
+}
+
+/* Cambiamos el color del elemento de la lista que estÃ© seleccionado por el 
+ratÃ³n */
+nav ul li:hover {
+    background: linear-gradient(to bottom, #2D77A2 5%, #337DA8 100%);
+    background-color: #28739E;
+
+}
+
+/* Especificamos el color del texto de los enlaces que estÃ©n seleccionados por 
+el ratÃ³n */
+nav ul li:hover a {
+    color: black;
+}
+
+/* Especificamos los marges y el relleno de los elementos de la lista */
+nav ul li {
+    margin: 0;
+    padding: 0;
+}
+
+/* Definimos los valores de estilo de los enlaces de la lista */
+nav ul li a {
+    display: block; 
+    padding: 0.5vmax;
+    color: black;
+    text-decoration: none;
+    text-align: center;
+}
+
+nav ul input
+{
+    moz-box-shadow: inset 0px 1px 0px 0px #3985B1;
+    -webkit-box-shadow: inset 0px 1px 0px 0px #3985B1;
+    box-shadow: inset 0px 1px 0px 0px #3985B1;
+    background-color: #216288;
+    border: 1px solid #17445E;
+    display: inline-table;
+    cursor: pointer;
+    color: #FFFFFF;
+    padding: 8px 18px;
+    text-decoration: none;
+    font: 12px Arial, Helvetica, sans-serif;
+
+    margin-right: 0.40vmax;
+    margin-top: 0.20vmax;
+}
+
+nav ul input:hover{
+    background: linear-gradient(to bottom, #2D77A2 5%, #337DA8 100%);
+    background-color: #28739E;    
+}
