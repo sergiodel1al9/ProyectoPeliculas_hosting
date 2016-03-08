@@ -252,6 +252,9 @@ if (isset($_POST['eliminarGuionista'])) {
 // Comprobamos si hay una petición para añadir una pelicula
 if (isset($_POST['añadirPelicula'])) {
 
+    
+   
+    
     // Comprobamos si en la información de POSt viene un id_pelicula. De ser así, 
     // tratamos con una modificación de datos, en caso contrario con un alta
     if ($_POST['id_pelicula'] === "") {
@@ -331,6 +334,9 @@ if (isset($_POST['modificarPelicula'])) {
     // Verificamos que se haya enviado el id de la película a eliminar
     if (!empty($_POST['id'])) {
 
+        
+
+
         // Realizamos una petición al servidor para recuperar la información de 
         // la película con id especificado
         $pelicula = $cliente->listaPelicula($_POST['id']);
@@ -371,9 +377,7 @@ if (isset($_POST['modificarPelicula'])) {
         // Si no tenemos id, mostramos un mensaje
         $mensaje = 'No se ha podido identificar el id de la película a modificar';
     }
-    
 }
- 
 ?>
 
 <!DOCTYPE HTML>
@@ -658,9 +662,11 @@ if (isset($_POST['modificarPelicula'])) {
                                             </tr>
                                             <?php
 // Recuperamos el listado de todas las peliculas
+
+
                                             $array = corregirArrayStdClass($cliente->listaPeliculas());
 
-                                            // Recorremos el array de peliculas
+// Recorremos el array de peliculas
                                             foreach ($array as $valor) {
 
                                                 // Para cada iteración creamos una fila de la tabla

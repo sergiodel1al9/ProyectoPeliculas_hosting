@@ -1,5 +1,5 @@
 <?php
-$mensaje = '';
+    $mensaje = '';
 require_once './include/DB.php';
 $cliente = new DB();
 

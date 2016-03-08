@@ -25,13 +25,13 @@ class DB {
             $base = "peliculas";
             $usu = "root";
             $pas = "";
-          */
+         */
             
             $serv = "mysql.hostinger.es";
             $base = "u869509894_pelic";
             $usu = "u869509894_dwes";
             $pas = "D7gJxvP9A7SHxWlTK2";            
-            
+           
             
             // Creamos un array de configuración para la conexion PDO a la base de 
             // datos
@@ -452,7 +452,7 @@ class DB {
             $row = $resultado->fetch();
         }
 
-        return $row;
+        return new Genero($row);
     }
 
     /**
@@ -483,7 +483,7 @@ class DB {
      * @return \Artista Un array de objetos Artista con la información requerida
      */
     public function listaArtistasPelicula($id_pelicula, $puesto) {
-
+        
         // Seleccionamos una consulta u otra dependiendo del puesto del cual queremos recuperar los artistas
         switch ($puesto) {
             case 0: {
@@ -522,7 +522,7 @@ class DB {
                 $artista = $this->listaArtista($row['id_artista']);
 
                 // Con esa información creamos un nuevo objeto artista y lo añadimos al array de resultados
-                $artistas[] = new Artista($artista);
+                $artistas[] = $artista;
 
                 // Recuperamos la siguiente fila del resultado de la base de datos
                 $row = $resultado->fetch();
@@ -546,7 +546,7 @@ class DB {
             $row = $resultado->fetch();
         }
 
-        return $row;
+        return new Artista($row);
     }
 
     /**
@@ -604,8 +604,8 @@ class DB {
                 return NULL;
             }
         }
-
-        return $row;
+       
+        return new Pelicula($row['id_pelicula'], $row['nombre'], $row['anyo'], $row['genero'], $row['sinopsis'], $row['duracion'], $row['directores'], $row['guionistas'], $row['actores']);
     }
 
     /**
@@ -665,7 +665,7 @@ class DB {
                 $id_pelicula = $this->dwes->lastInsertId();
 
                 // Recuperamos el array de actores
-                $actores = corregirArrayStdClass($pelicula->getActores()->arrayArtistas);                
+                $actores = corregirArrayStdClass($pelicula->getActores());                
 
                 
                 
@@ -689,7 +689,7 @@ class DB {
                     }
                 }
 
-                $directores = corregirArrayStdClass($pelicula->getDirectores()->arrayArtistas);
+                $directores = corregirArrayStdClass($pelicula->getDirectores());
 
                 for ($index = 0; $index < count($directores); $index++) {
 
@@ -710,7 +710,7 @@ class DB {
                     }
                 }
 
-                $guionistas = corregirArrayStdClass($pelicula->getGuionistas()->arrayArtistas);
+                $guionistas = corregirArrayStdClass($pelicula->getGuionistas());
 
                 for ($index = 0; $index < count($guionistas); $index++) {
 
@@ -770,14 +770,8 @@ class DB {
             $row = $resultado->fetch();
             while ($row != null) {
 
-                $temp = $this->listaPelicula($row['id_pelicula']);
+                $peli = $this->listaPelicula($row['id_pelicula']);
 
-                $genero = new Genero($temp['genero']);
-
-
-                $peli = new Pelicula(
-                        $temp['id_pelicula'], $temp['nombre'], $temp['anyo'], $genero, $temp['sinopsis'], $temp['duracion'], $temp['directores'], $temp['guionistas'], $temp['actores']
-                );
 
                 $peliculas[] = $peli;
 
